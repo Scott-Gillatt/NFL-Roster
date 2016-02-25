@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myRoster">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NFL Roster</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body ng-controller="RosterController">
+    <!--Start of Container-->
+    <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!--Start of Adding Players to My Roster and Searching-->
+            <div class="panel panel-info navbar-fixed-top col-xs-2 col-sm-2 col-md-2">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        Add Player
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <form ng-submit="addPlayers()" class="form-inline">
+                        <div class="form-group">
+                            <label for="PlayerName">Player Name:
+                                <input type="text" class="form-control" placeholder="Player Name" id="PlayerName" ng-model="newplayer.fullname">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="PlayerJersey">Player Jersey:
+                                <input type="text" class="form-control" placeholder="Player Jersey" id="PlayerJersey" ng-model="newplayer.jersey">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="PlayerPosition">Player Position:
+                                <input type="text" class="form-control" placeholder="Player Position" id="PlayerPosition" ng-model="newplayer.position">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="PlayerPro_Team">Player Pro_Team:
+                                <input type="text" class="form-control" placeholder="Players Pro_Team" id="PlayerPro_Team" ng-model="newplayer.pro_team">
+                            </label>
+                        </div>
+                        <br>
+                        <br>
+                        <input type="submit" id="addPlayer" value="Add To Roster">
+                    </form>
+                    <br>
+                    <div>
+                        <label>Search My Roster:
+                            <input ng-model="Name" placeholder="Player Name">
+                        </label>
+                        <label>Search NFL Roster:
+                            <input ng-model="searchID" placeholder="Player ID">
+                        </label>
+                        <br>
+                        <button class="btn btn-primary" ng-click="loadPlayers()">Load Players</button>
+                        <button class="btn btn-primary" ng-click="setPlayers()">Set Players</button>
+                    </div>
+                </div>
+            </div>
+        <!--End of Adding Players to My Roster and Searching-->
+        <!--Start of My Player Roster-->
+            <div class="panel panel-primary roster col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-10 col-md-offset2 col-md-10 col-lg-offset-2 col-lg-10 panel-transparent ">
+                <div class=" panel-heading text-center roster-body">
+                    My Roster
+                </div>
+                <div ng-repeat="player in roster | filter:Name">
+                    <div class="player-transparent panel-default col-xs-4 col-sm-4 col-md-3 col-lg-3 text-center">
+                        <div class="panel-heading player-card text-center">
+                            <button type="submit" ng-click="removeFromRoster(player)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            <div class="panel-body">
+                                <img ng-src="{{player.photo}}" alt="NFL
+                                Player Card" class="img-responsive center-block">
+                                <br>Player Name:
+                                <br>{{player.fullname}}
+                                <br>Pos: {{player.position}}, # {{player.jersey}}, Team: {{player.pro_team}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--End of my Player Roster-->
+
+        <!--Start of NFL Roster of Players-->
+        <div class="panel panel-primary roster col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-10 col-md-offset2 col-md-10 col-lg-offset-2 col-lg-10 panel-transparent ">
+            <div class=" panel-heading text-center roster-body">
+                NFL Players
+            </div>
+            <div ng-repeat="(key, player) in players | filter:searchID | limitTo:100 | orderBy: 'pro_team'">
+                <div class="player-transparent panel-default col-xs-4 col-sm-4 col-md-3 col-lg-3 text-center">
+                    <div class="panel-heading player-card text-center">
+                        <button type="sumbit" ng-click="addToRoster(player)" class="btn btn-success"><i class="fa fa-plus-square"></i></button>
+                        <div class="panel-body">
+                            <!--<img ng-src="{{player.photo}}" alt="NFL
+                                Player Card" class="img-responsive center-block">-->
+                            <br>Player Name:
+                            <br>{{player.fullname}}
+                            <br>Pos: {{player.position}}, # {{player.jersey}}, Team: {{player.pro_team}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End of NFL Roster of Players-->
+    </div>
+    <!--End of the Container-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js "></script>
+    <script src="app/app.js "></script>
+    <script src="app/controller/controller.js"></script>
+    <script src="app/services/data.services.js"></script>
+</body>
+
+</html>

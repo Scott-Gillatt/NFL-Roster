@@ -1,0 +1,21 @@
+body{
+    background-image: url("img/nfl_logo_background_field.png");
+    background-size: 100%;
+    background-attachment: fixed;
+}
+#removePlayer{
+    text-align: right;
+}
+.panel-transparent{
+    background: none;
+}
+.player-transparent{
+    opacity: .95;
+}
+.player-card{
+    margin-bottom: 20px;
+    height: 325px;
+}
+.roster-body{
+        margin-bottom: 20px;
+}
