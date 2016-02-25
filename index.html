@@ -13,7 +13,7 @@
     <!--Start of Container-->
     <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <!--Start of Adding Players to My Roster and Searching-->
-            <div class="panel panel-info navbar-fixed-top col-xs-2 col-sm-2 col-md-2">
+            <div class="panel panel-info navbar-fixed-top col-xs-2 col-sm-2 col-md-2 col-lg-2">
                 <div class="panel-heading">
                     <div class="panel-title text-center">
                         Add Player
@@ -43,16 +43,21 @@
                         </div>
                         <br>
                         <br>
+                        <div class="form-group">
                         <input type="submit" id="addPlayer" value="Add To Roster">
+                        </div>
                     </form>
                     <br>
-                    <div>
+                    <div class="form-group">
                         <label>Search My Roster:
                             <input ng-model="Name" placeholder="Player Name">
                         </label>
+                        </div>
+                        <div class="form-group">
                         <label>Search NFL Roster:
                             <input ng-model="searchID" placeholder="Player ID">
                         </label>
+                        </div>
                         <br>
                         <button class="btn btn-primary" ng-click="loadPlayers()">Load Players</button>
                         <button class="btn btn-primary" ng-click="setPlayers()">Set Players</button>
