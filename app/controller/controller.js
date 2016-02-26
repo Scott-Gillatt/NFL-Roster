@@ -36,6 +36,10 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
         $scope.players.push(player)
         $scope.roster.splice($scope.roster.indexOf(player), 1);
     }
-
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        
+    });
 
 });
