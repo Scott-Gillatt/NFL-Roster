@@ -40,6 +40,14 @@ body{
     font: 14px NFLEndZoneTechBold,"sans-serif";
     color: #999;
 }
+.white{
+    color: white;
+}
+#playerLimit{
+    padding-top: 10px;
+    padding-left: 5px; 
+    border-left: 1px solid #000000;
+}
 .ARI {
     color: #97233F;
     border: solid 1px #FFB612;

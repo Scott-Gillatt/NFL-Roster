@@ -2,7 +2,9 @@
 app.controller('RosterController', function ($scope, DataService, $filter) {
     $scope.players = [];
     $scope.roster = [];
-    $scope.myfilter = { };
+    $scope.myFilter = {};
+    $scope.NFLFilter = {};
+    $scope.playerLimit = 50;
     // AFC
     $scope.AFCEast = [{ long: "Buffalo Bills", short: "BUF" }, { long: "Miami Dolphins", short: "MIA" }, { long: "New England Patriots", short: "NE" }, { long: "New York Jets", short: "NYJ" }];
     $scope.AFCNorth = [{ long: "Baltimore Ravens", short: "BAL" }, { long: "Cincinnati Bengals", short: "CIN" }, { long: "Cleveland Browns", short: "CLE" }, { long: "Pittsburgh Steelers", short: "PIT" }];
@@ -14,6 +16,8 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
     $scope.NFCNorth = [{ long: "Chicago Bears", short: "CHI" }, { long: "Detroit Lions", short: "DET" }, { long: "Green Bay Packers", short: "GB" }, { long: "Minnesota Vikings", short: "MIN" }];
     $scope.NFCSouth = [{ long: "Atlanta Falcons", short: "ARI" }, { long: "Carolina Panthers", short: "CAR" }, { long: "New Orleans Saints", short: "NO" }, { long: "Tampa Bay Buccaneers", short: "TB" }];
     $scope.NFCWest = [{ long: "Arizona Cardinals", short: "ARI" }, { long: "St. Louis Rams", short: "STL" }, { long: "San Francisco 49ers", short: "SF" }, { long: "Seattle Seahawks", short: "SEA" }];
+
+    $scope.NFLPositions = ["QB", "RB", "WR", "TE", "K", "LB", "DB", "DL"]
 
     $scope.loadPlayers = function () {
         DataService.loadPlayers();
@@ -48,7 +52,7 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
         $scope.players.push(player)
         $scope.roster.splice($scope.roster.indexOf(player), 1);
     }
-    
+
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

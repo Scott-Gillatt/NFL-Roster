@@ -23,9 +23,10 @@
                 <ul class="nav navbar-nav">
 
                     <li><a href="#menu-toggle" class="btn btn-default " id="menu-toggle">Toggle Menu</a></li>
-                    <li><a href="#myTeam" class="btn btn-default ">My Roster</a></li>
-                    <li><a href="#nfl" class="btn btn-default ">NFL Roster</a></li>
+                    <li><a href="#myTeam" class="btn btn-default "> Go To My Roster</a></li>
+                    <li><a href="#nfl" class="btn btn-default ">Go To NFL Roster</a></li>
 
+                    <!--Start of Teams Dropdown populated-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams <span class="caret"></span></a>
                         <div class="dropdown-menu multi-column">
@@ -33,42 +34,55 @@
                             <div class="AFC">
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> AFC East</div>
-                                    <li ng-repeat="teams in AFCEast"> <a ng-click="myFilter = pro_teams ='teams.short'">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in AFCEast"> <a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> AFC North</div>
-                                    <li ng-repeat="teams in AFCNorth"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in AFCNorth"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> AFC South</div>
-                                    <li ng-repeat="teams in AFCSouth"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in AFCSouth"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> AFC West</div>
-                                    <li ng-repeat="teams in AFCWest"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in AFCWest"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</span></li>
                                 </ul>
                             </div>
 
                             <div class="NFC">
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> NFC East</div>
-                                    <li ng-repeat="teams in NFCEast"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in NFCEast"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> NFC North</div>
-                                    <li ng-repeat="teams in NFCNorth"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in NFCNorth"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> NFC South</div>
-                                    <li ng-repeat="teams in NFCSouth"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in NFCSouth"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                                 <ul class="dropdown-menu">
                                     <div class="conference-title"> NFC West</div>
-                                    <li ng-repeat="teams in NFCWest"><a href="#" ng-click="myFilter = {player:pro_team}">{{teams.long}}</a></li>
+                                    <li ng-repeat="teams in NFCWest"><a href="#" ng-click="NFLFilter.pro_team = teams.short">{{teams.long}}</a></li>
                                 </ul>
                             </div>
-                            
+
                         </div>
+                    </li>
+                    <!--End of Teams Dropdown populated-->
+                    <!--Start of position dropdown populated-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Positions: <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="positions in NFLPositions"><a href="#" ng-click="NFLFilter.position = positions">{{positions}}</a></li>
+                        </ul>
+                    </li>
+                    <!--End of position dropdown populated-->
+                    <li id="playerLimit">
+                        Limit NFL Players Shown To:
+                        <input type="number" step="1" ng-model="playerLimit">
                     </li>
                 </ul>
             </div>
@@ -115,12 +129,12 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <label>Search My Roster:
-                                    <input ng-model="Name" placeholder="Player Name">
+                                    <input ng-model="Name" placeholder="Search Roster">
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>Search NFL Roster:
-                                    <input ng-model="myFilter" placeholder="Player">
+                                    <input ng-model="search" placeholder="Search NFL">
                                 </label>
                             </div>
                             <button class="btn btn-primary" ng-click="loadPlayers()">Load Players</button>
@@ -138,6 +152,7 @@
             <!--Start of My Player Roster-->
             <div class="row">
                 <div class="panel panel-primary roster col-xs-12 col-sm-12 col-md-12 col-lg-12 panel-transparent ">
+                    <span class="white text-right">   Filters = {{myFilter}} <a href="#" ng-click="myFilter.pro_team = ''">Clear Team</a> <a href="#" ng-click="myFilter.position = ''">Clear Position</a></span>
                     <div class=" panel-heading text-center roster-body">
                         <a name="myTeam"></a>
                         My Roster
@@ -151,7 +166,8 @@
                                 Player Card" class="img-responsive center-block">
                                     <br>Player Name:
                                     <br>{{player.fullname}}
-                                    <br>Pos: {{player.position}}, # {{player.jersey}}, Team: <a href="#" ng-click="myFilter = {pro_team: [pro_team]}">{{player.pro_team}}</a>
+                                    <br>Pos: <a href="#" ng-click="myFilter.position = player.position"> {{player.position}}</a>,
+                                    # {{player.jersey}}, Team: <a href="#" ng-click="myFilter.pro_team = player.pro_team">{{player.pro_team}}</a>
                                 </div>
                             </div>
                         </div>
@@ -163,11 +179,12 @@
             <!--Start of NFL Roster of Players-->
             <div class="row">
                 <div class="panel panel-primary roster  col-xs-12  col-sm-12  col-md-12  col-lg-12 panel-transparent ">
+                    <span class="white text-right">   Filters = {{NFLFilter}} <a href="#" ng-click="NFLFilter.pro_team = ''">Clear Team</a> <a href="#" ng-click="NFLFilter.position = ''">Clear Position</a></span>
                     <div class=" panel-heading text-center roster-body">
                         <a name="nfl"></a>
                         NFL Players
                     </div>
-                    <div id="sortTeam" ng-repeat="player in players | filter:myFilter | limitTo:5">
+                    <div id="sortTeam" ng-repeat="player in players | filter:NFLFilter | filter:search | limitTo:playerLimit | orderBy:fullname">
                         <div class="player-transparent panel-default col-xs-4 col-sm-4 col-md-3 col-lg-3 text-center">
                             <div class="panel-heading nfl-card  text-center">
                                 <button type="sumbit" ng-click="addToRoster(player)" class="btn btn-success"><i class="fa fa-plus-square"></i> DRAFT</button>
@@ -176,7 +193,8 @@
                                 Player Card" class="img-responsive center-block">-->
                                     <br>Player Name:
                                     <br>{{player.fullname}}
-                                    <br>Pos: {{player.position}}, # {{player.jersey}}, Team: <a href="#" ng-click="myFilter = {player: 'pro_team'}">{{player.pro_team}}</a>
+                                    <br>Pos: <a href="#" ng-click="NFLFilter.position = player.position"> {{player.position}}</a>,
+                                    # {{player.jersey}}, Team: <a href="#" ng-click="NFLFilter.pro_team = player.pro_team">{{player.pro_team}}</a>
                                 </div>
                             </div>
                         </div>
@@ -188,6 +206,8 @@
         </div>
         <!--End of the Container-->
     </div>
+    <!--End of ID Wrapper-->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js "></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js "></script>
