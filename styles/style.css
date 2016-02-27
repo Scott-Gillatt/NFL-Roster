@@ -35,16 +35,6 @@ body{
     border: none !important;
     box-shadow: none !important;
 }
-.AFC{
-    border: transparent;
-    background-color: transparent;
-    background-image: url("http://i.nflcdn.com/static/site/7.3/img/tickets/afc-logo.png");
-}
-.NFC{
-    border: transparent;
-    background-color: transparent;
-    background-image: url("http://i.nflcdn.com/static/site/7.3/img/tickets/nfc-logo.png");
-}
 .conference-title{
     text-transform: uppercase;
     font: 14px NFLEndZoneTechBold,"sans-serif";

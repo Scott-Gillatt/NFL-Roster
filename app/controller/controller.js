@@ -49,10 +49,6 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
         $scope.roster.splice($scope.roster.indexOf(player), 1);
     }
     
-    $scope.sortTeam = function (team){
-        console.log(team)
-    }
-    
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
