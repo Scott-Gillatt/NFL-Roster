@@ -2,7 +2,7 @@ body{
     background-image: url("img/nfl_logo_background_field.png");
     background-size: 100%;
     background-attachment: fixed;
-padding-top: 50px;
+    padding-top: 50px;
 }
 #removePlayer{
     text-align: right;
@@ -23,4 +23,189 @@ padding-top: 50px;
 .nfl-card{
     margin-bottom: 10px;
     height: 175px;
+}
+.dropdown-menu.multi-column {
+    width: 775px;
+}
+
+.dropdown-menu.multi-column .dropdown-menu {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.AFC{
+    border: transparent;
+    background-color: transparent;
+    background-image: url("http://i.nflcdn.com/static/site/7.3/img/tickets/afc-logo.png");
+}
+.NFC{
+    border: transparent;
+    background-color: transparent;
+    background-image: url("http://i.nflcdn.com/static/site/7.3/img/tickets/nfc-logo.png");
+}
+.conference-title{
+    text-transform: uppercase;
+    font: 14px NFLEndZoneTechBold,"sans-serif";
+    color: #999;
+}
+.ARI {
+    color: #97233F;
+    border: solid 1px #FFB612;
+}
+
+.ATL {
+    color: #A71930;
+    border: solid 1px #A5ACAF;
+}
+
+.BAL {
+    color: #241773;
+    border: solid 1px #9E7C0C;
+}
+
+.BUF {
+    color: #00338D;
+    border: solid 1px #C60C30;
+}
+
+.CAR {
+    color: #0085CA;
+    border: solid 1px #BFC0BF;
+}
+
+.CHI {
+    color: #0B162A;
+    border: solid 1px #C83803;
+}
+
+.CIN {
+    color: #FB4F14;
+    border: solid 1px #000000;
+}
+
+.CLE {
+    color: #FB4F14;
+    border: solid 1px #A5ACAF;
+}
+
+.DAL {
+    color: #002244;
+    border: solid 1px #00338D;
+}
+
+.DEN {
+    color: #002244;
+    border: solid 1px #FB4F14;
+}
+
+.DET {
+    color: #005A8B;
+    border: solid 1px #B0B7BC;
+}
+
+.GB {
+    color: #203731;
+    border: solid 1px #FFB612;
+}
+
+.HOU {
+    color: #03202F;
+    border: solid 1px #A71930;
+}
+
+.IND {
+    color: #002C5F;
+    border: solid 1px #A5ACAF;
+}
+
+.JAC {
+    color: #006778;
+    border: solid 1px #D7A22A;
+}
+
+.KC {
+    color: #E31837;
+    border: solid 1px #FFB612;
+}
+
+.LA {
+    color: #002244;
+    border: solid 1px #B3995D;
+}
+
+.MIA {
+    color: #008E97;
+    border: solid 1px #F58220;
+}
+
+.MIN {
+    color: #4F2683;
+    border: solid 1px #FFC62F;
+}
+
+.NE {
+    color: #002244;
+    border: solid 1px #C60C30;
+}
+
+.NO {
+    color: #000000;
+    border: solid 1px #9F8958;
+}
+
+.NYG {
+    color: #0B2265;
+    border: solid 1px #A71930;
+}
+
+.NYJ {
+    color: #203731;
+    border: solid 1px #A5ACAF;
+}
+
+.OAK {
+    color: #A5ACAF;
+    border: solid 1px #000000;
+}
+
+.PHI {
+    color: #004953;
+    border: solid 1px #565A5C;
+}
+
+.PIT {
+    color: #000000;
+    border: solid 1px #FFB612;
+}
+
+.SD {
+    color: #002244;
+    border: solid 1px #FFB612;
+}
+
+.SF {
+    color: #AA0000;
+    border: solid 1px #B3995D;
+}
+
+.SEA {
+    color: #002244;
+    border: solid 1px #69BE28;
+}
+
+.TB {
+    color: #D50A0A;
+    border: solid 1px #FF7900;
+}
+
+.TEN {
+    color: #002244;
+    border: solid 1px #4B92DB;
+}
+
+.WAS {
+    color: #773141;
+    border: solid 1px #FFB612;
 }
