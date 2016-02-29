@@ -1,6 +1,6 @@
+
 app.factory('DataService', function ($http) {
     var players = [];
-    var teams = [];
     var service = {
         loadPlayers: function () {
             $http.get("http://bcw-getter.herokuapp.com/?url=http%3A%2F%2Fapi.cbssports.com%2Ffantasy%2Fplayers%2Flist%3Fversion%3D3.0%26SPORT%3Dfootball%26response_format%3Djson")
@@ -11,11 +11,11 @@ app.factory('DataService', function ($http) {
                             players.push(data.body.players[i]);
                         }
                     }
-                    // this.loadTeams();
+                    $scope.showSpinner = false;
                 });
         },
         getAllPlayers: function () {
-            return players;
+            return players
         },
         getPlayersByTeam: function () {
         },

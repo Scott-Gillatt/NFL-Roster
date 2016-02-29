@@ -20,7 +20,8 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
     $scope.NFLPositions = ["QB", "RB", "WR", "TE", "K", "LB", "DB", "DL"]
 
     $scope.loadPlayers = function () {
-        DataService.loadPlayers();
+        $scope.showSpinner = true;
+        DataService.loadPlayers()
     },
 
     $scope.setPlayers = function () {
