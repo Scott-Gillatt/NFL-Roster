@@ -11,7 +11,7 @@ app.factory('DataService', function ($http) {
                             players.push(data.body.players[i]);
                         }
                     }
-                    $scope.showSpinner = false;
+                    return $scope.showSpinner = false;
                 });
         },
         getAllPlayers: function () {
