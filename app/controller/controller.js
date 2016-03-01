@@ -1,5 +1,5 @@
 /* global angular */
-app.controller('RosterController', function ($scope, DataService, $filter) {
+app.controller('RosterController', function ($scope, DataService, $filter, $q, $rootScope) {
     $scope.players = [];
     $scope.roster = [];
     $scope.myFilter = {};
@@ -20,7 +20,7 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
     $scope.NFLPositions = ["QB", "RB", "WR", "TE", "K", "LB", "DB", "DL"]
 
     $scope.loadPlayers = function () {
-        $scope.showSpinner = true;
+        $rootScope.showSpinner = true;
         DataService.loadPlayers()
     },
 
@@ -39,14 +39,14 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
             })
         $scope.resetPlayer();
     }
+    
+    $scope.resetPlayer = function () {
+        $scope.newplayer = "";
+    }
 
     $scope.addToRoster = function (player) {
         $scope.roster.push(player)
         $scope.players.splice($scope.players.indexOf(player), 1);
-    }
-
-    $scope.resetPlayer = function () {
-        $scope.newplayer = "";
     }
 
     $scope.removeFromRoster = function (player) {
