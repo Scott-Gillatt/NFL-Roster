@@ -29,6 +29,11 @@ body{
     border: solid 1px #7F7F00;
     background-color: #000080;
 }
+.my-team{
+    color: #FFF;
+    border: solid 1px #7F7F00;
+    background-color: #000080;
+}
 .dropdown-menu.multi-column {
     width: 775px;
 }

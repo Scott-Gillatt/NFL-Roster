@@ -50,6 +50,10 @@ app.controller('RosterController', function ($scope, DataService, $filter, $q) {
             })
         $scope.resetPlayer();
     }
+    
+    $scope.resetPlayer = function () {
+        $scope.newplayer = "";
+    }
 
     $scope.resetPlayer = function () {
         $scope.newplayer = "";
