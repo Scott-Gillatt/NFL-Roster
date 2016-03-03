@@ -1,18 +1,22 @@
+/* global app */
 
-app.factory('DataService', function ($http) {
+app.factory('DataService', function ($http, $q) {
     var players = [];
     var service = {
         loadPlayers: function () {
-            $http.get("http://bcw-getter.herokuapp.com/?url=http%3A%2F%2Fapi.cbssports.com%2Ffantasy%2Fplayers%2Flist%3Fversion%3D3.0%26SPORT%3Dfootball%26response_format%3Djson")
+            var deferred = $q.defer();
+          $http.get("http://bcw-getter.herokuapp.com/?url=http%3A%2F%2Fapi.cbssports.com%2Ffantasy%2Fplayers%2Flist%3Fversion%3D3.0%26SPORT%3Dfootball%26response_format%3Djson")
                 .success(function (data) {
+
                     var len = data.body.players.length
                     for (var i = 0; i < len; i++) {
                         if (data.body.players[i].pro_status !== null) {
                             players.push(data.body.players[i]);
                         }
                     }
-                    return $scope.showSpinner = false;
+                    deferred.resolve(players.data)
                 });
+                    return deferred.promise
         },
         getAllPlayers: function () {
             return players
@@ -22,14 +26,6 @@ app.factory('DataService', function ($http) {
         getPlayersByPosition: function (position) {
 
         },
-        
-        // loadTeams: function () {
-        //     for (var i = 0; i < players.length; i++) {
-        //         if (players[i].pro_team === team) {
-        //             teams.push(team[i])
-        //         }
-        //     }    
-        // }
     }
     return service;
 });

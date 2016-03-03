@@ -6,7 +6,6 @@
     <title>NFL Roster</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!--<link href="styles/bootstrap.min.css" rel="stylesheet">-->
     <link href="styles/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -16,7 +15,7 @@
 
         <!--Start of Navbar-->
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">NFL Roster</a>
                 </div>
@@ -80,10 +79,15 @@
                         </ul>
                     </li>
                     <!--End of position dropdown populated-->
+                    <!--Start of setting the Limit of Players-->
                     <li id="playerLimit">
+                        <form ng-submit="setPlayerLimit(count)">
                         Limit NFL Players Shown To:
-                        <input type="number" step="1" ng-model="playerLimit">
+                        <input type="count" step="1" name="playerLimit" ng-model="count">
+                        <input type="submit" id="submit" value="Set Player Limit"></button>
+                        </form>
                     </li>
+                    <!--End of setting the Limit of Players-->
                 </ul>
             </div>
         </nav>
@@ -102,22 +106,22 @@
                         <form ng-submit="addPlayers()" class="form-inline">
                             <div class="form-group">
                                 <label for="PlayerName">Player Name:
-                                    <input type="text" class="form-control" placeholder="Player Name" id="PlayerName" ng-model="newplayer.fullname">
+                                    <input type="text" class="form-control" placeholder="Player Name" id="PlayerName" ng-model="newplayer.fullname" required>
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label for="PlayerJersey">Player Jersey:
-                                    <input type="text" class="form-control" placeholder="Player Jersey" id="PlayerJersey" ng-model="newplayer.jersey">
+                                    <input type="text" class="form-control" placeholder="Player Jersey" id="PlayerJersey" ng-model="newplayer.jersey" required>
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label for="PlayerPosition">Player Position:
-                                    <input type="text" class="form-control" placeholder="Player Position" id="PlayerPosition" ng-model="newplayer.position">
+                                    <input type="text" class="form-control" placeholder="Player Position" id="PlayerPosition" ng-model="newplayer.position" required>
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label for="PlayerPro_Team">Player Pro_Team:
-                                    <input type="text" class="form-control" placeholder="Players Pro_Team" id="PlayerPro_Team" ng-model="newplayer.pro_team">
+                                    <input type="text" class="form-control" placeholder="Players Pro_Team" id="PlayerPro_Team" ng-model="newplayer.pro_team" required>
                                 </label>
                             </div>
                             <br>
@@ -139,7 +143,7 @@
                             </div>
                             <button class="btn btn-primary" ng-click="loadPlayers()" ng-show="!showSpinner">Load Players</button>
                             <button class="btn btn-primary" ng-show="showSpinner"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Players...</button>
-                            <button class="btn btn-primary" ng-click="setPlayers()">Set Players</button>
+                            <button class="btn btn-primary" ng-show="playersloaded" ng-click="setPlayers()">Set Players</button>
                         </form>
                     </div>
                 </div>
@@ -162,7 +166,7 @@
                         <div class="player-transparent panel-default col-xs-4 col-sm-4 col-md-3 col-lg-3 text-center">
                             <div class="panel-heading player-card text-center">
                                 <button type="submit" ng-click="removeFromRoster(player)" class="btn btn-danger"><i class="fa fa-trash"></i> FIRE</button>
-                                <div class="panel-body">
+                                <div class="panel-body my-team">
                                     <img ng-src="{{player.photo}}" alt="NFL
                                 Player Card" class="img-responsive center-block">
                                     <br>Player Name:
@@ -190,8 +194,8 @@
                             <div class="panel-heading nfl-card  text-center">
                                 <button type="sumbit" ng-click="addToRoster(player)" class="btn btn-success"><i class="fa fa-plus-square"></i> DRAFT</button>
                                 <div class="panel-body {{player.pro_team}}">
-                                    <!--<img ng-src="{{player.photo}}" alt="NFL
-                                Player Card" class="img-responsive center-block">-->
+                                    <img ng-src="{{player.photo}}" alt="NFL
+                                Player Card" class="img-responsive center-block">
                                     <br>Player Name:
                                     <br>{{player.fullname}}
                                     <br>Pos: <a href="#" ng-click="NFLFilter.position = player.position"> {{player.position}}</a>,
@@ -213,7 +217,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js "></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js "></script>
-    <!--<script src="node_modules/agile/dist/agile.js"></script>-->
     <script src="app/app.js "></script>
     <script src="app/controller/controller.js"></script>
     <script src="app/services/data.services.js"></script>

@@ -1,5 +1,5 @@
 /* global angular */
-app.controller('RosterController', function ($scope, DataService, $filter) {
+app.controller('RosterController', function ($scope, DataService, $filter, $q) {
     $scope.players = [];
     $scope.roster = [];
     $scope.myFilter = {};
@@ -19,9 +19,20 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
 
     $scope.NFLPositions = ["QB", "RB", "WR", "TE", "K", "LB", "DB", "DL"]
 
+    $scope.setPlayerLimit = function (limit) {
+        $scope.playerLimit = limit;
+        $scope.count = "";
+        
+    }
+
     $scope.loadPlayers = function () {
-        $scope.showSpinner = true;
+        $scope.showSpinner = true
+        $scope.playersloaded = false
         DataService.loadPlayers()
+            .then(function (data) {
+                $scope.showSpinner = false
+                $scope.playersloaded = true
+            })
     },
 
     $scope.setPlayers = function () {
@@ -40,13 +51,13 @@ app.controller('RosterController', function ($scope, DataService, $filter) {
         $scope.resetPlayer();
     }
 
+    $scope.resetPlayer = function () {
+        $scope.newplayer = "";
+    }
+
     $scope.addToRoster = function (player) {
         $scope.roster.push(player)
         $scope.players.splice($scope.players.indexOf(player), 1);
-    }
-
-    $scope.resetPlayer = function () {
-        $scope.newplayer = "";
     }
 
     $scope.removeFromRoster = function (player) {
