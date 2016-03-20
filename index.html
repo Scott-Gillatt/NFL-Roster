@@ -162,7 +162,7 @@
                         <a name="myTeam"></a>
                         My Roster
                     </div>
-                    <div ng-repeat="player in roster | filter:myFilter ">
+                    <div ng-repeat="player in roster | filter:myFilter | filter:Name ">
                         <div class="player-transparent panel-default col-xs-4 col-sm-4 col-md-3 col-lg-3 text-center">
                             <div class="panel-heading player-card text-center">
                                 <button type="submit" ng-click="removeFromRoster(player)" class="btn btn-danger"><i class="fa fa-trash"></i> FIRE</button>

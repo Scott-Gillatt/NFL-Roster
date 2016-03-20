@@ -1,5 +1,5 @@
 /* global angular */
-app.controller('RosterController', function ($scope, DataService, $filter, $q) {
+app.controller('RosterController', function ($scope, DataService, $filter) {
     $scope.players = [];
     $scope.roster = [];
     $scope.myFilter = {};
